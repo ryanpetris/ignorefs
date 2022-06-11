@@ -9,7 +9,7 @@ with open(os.path.join(os.path.dirname(__file__), "requirements.txt"), "r") as r
 
 setup(
     name='IgnoreFS',
-    version='1.0.1',
+    version='1.0.2',
     description='FUSE filesystem that hides/ignores files and directories based on an ignore file.',
     author='Ryan Petris',
     author_email='ryan@petris.net',

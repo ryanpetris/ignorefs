@@ -21,6 +21,8 @@ class IgnoreFS(fuse.Fuse):
         self.parser.add_option(mountopt="match_file", metavar="FILE", help="file that contains matches (.gitignore syntax)")
         self.parse(values=self, errex=1)
 
+        self.fuse_args.optdict.setdefault('subtype', 'ignorefs')
+
         spec_lines = []
 
         if self.match_file:
@@ -33,6 +35,7 @@ class IgnoreFS(fuse.Fuse):
             if self.fuse_args.mount_expected():
                 _, cmdline = self.cmdline
                 self.root = cmdline.pop()
+                self.fuse_args.optdict.setdefault('fsname', os.path.abspath(self.root))
                 self.fsinit()
         except OSError:
             print("can't enter root of underlying filesystem", file=sys.stderr)

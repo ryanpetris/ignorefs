@@ -40,6 +40,8 @@ class IgnoreFS(fuse.Fuse):
 
     @pathcheck
     def getattr(self, path):
+        print("WAT", path)
+        print("WAT", cleanpath(path))
         return os.lstat(cleanpath(path))
 
     @pathcheck
@@ -48,6 +50,7 @@ class IgnoreFS(fuse.Fuse):
 
     @pathcheck
     def readdir(self, path, offset):
+        print("WAT", path)
         yield fuse.Direntry('.')
         yield fuse.Direntry('..')
 

@@ -5,7 +5,7 @@ import os
 
 
 def cleanpath(path):
-    return os.path.join('..', os.path.relpath(path, '/'))
+    return os.path.join('.', os.path.relpath(path, '/'))
 
 
 def pathcheck(func):
